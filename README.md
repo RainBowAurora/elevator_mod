@@ -14,19 +14,20 @@
 ```
 ---
 ## 目录
+```
 elevator_mod
 ├── CMakeLists.txt
 ├── include
 │   └── elevator_mod
 ├── launch
 ├── lib
-│   ├── mqtt
-│   │   ├── CMakeLists.txt
+│   ├── mqtt  #封装mosquitto
+│   │   ├── CMakeLists.txt
 │   │   ├── mqtt.cpp
 │   │   ├── mqtt.h
 │   │   └── mqtt_test.cpp
-│   └── topic
-│       ├── CMakeLists.txt
+│   └── topic #协议
+│       ├── CMakeLists.txt
 │       ├── topic_confirm.h
 │       ├── topic_confirm_response.h
 │       ├── topic_elevator_command.h
@@ -39,15 +40,15 @@ elevator_mod
     ├── CMakeLists.txt
     ├── declare_singleton.h
     ├── define_type_trait.h
-    ├── elevator_control
-    │   ├── elevator_control.cpp
+    ├── elevator_control  # 电梯控制
+    │   ├── elevator_control.cpp
     │   ├── elevator_control.h
     │   └── elevator_control_test.cpp
-    └── module_argument
+    └── module_argument # 模块参数解析（用于快速测试）
         ├── module_argument.cpp
         ├── module_argument.h
         └── module_argument_test.cpp
-
+```
 ## 依赖
 1. [mosquitto(必须)](https://github.com/eclipse/mosquitto)
 ```

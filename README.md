@@ -74,9 +74,9 @@ cmake ..
 make && sudo make install
 ```
 
-3. [gtest(非必须)](https://github.com/google/googletest/tree/master/googletest.git)
+3. [gtest(非必须)](https://github.com/google/googletest.git)
 ```
-git clone https://github.com/google/googletest/tree/master/googletest.git
+git clone https://github.com/google/googletest.git
 cd googletest
 mkdir build && cd build
 cmake ..

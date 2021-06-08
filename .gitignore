@@ -1,0 +1,8 @@
+#vscode
+.vscode/
+
+#Cmake build
+build/
+
+#log
+log/

@@ -18,3 +18,11 @@ target_link_libraries(module_argument zr_mqtt)
 
 add_executable(module_argument_test module_argument/module_argument_test.cpp) 
 target_link_libraries(module_argument_test module_argument)
+
+
+
+###############################robot_control####################################
+aux_source_directory(robot_control ROBOT_CONTROL_DIR)
+message(STATUS "robot_control = ${ROBOT_CONTROL_DIR}")
+add_library(robot_control_mod ${ROBOT_CONTROL_DIR})
+target_link_libraries(robot_control_mod ${catkin_LIBRARIES})

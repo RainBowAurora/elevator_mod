@@ -30,6 +30,11 @@ protected:
     ActionStatus status_;
 };
 
+template<typename T, typename... Args>
+T* Instance(Args&&... args){
+    return new T(std::forward<Args>(args)...);
+}
+
 } //namespace ZROS
 
 #endif /*__ROBOT_CONTROL_BASE_H__*/

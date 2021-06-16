@@ -26,3 +26,6 @@ aux_source_directory(robot_control ROBOT_CONTROL_DIR)
 message(STATUS "robot_control = ${ROBOT_CONTROL_DIR}")
 add_library(robot_control_mod ${ROBOT_CONTROL_DIR})
 target_link_libraries(robot_control_mod ${catkin_LIBRARIES})
+
+add_executable(robot_control_test robot_control/robot_control_test.cpp)
+target_link_libraries(robot_control_test robot_control_mod)

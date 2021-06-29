@@ -5,6 +5,11 @@
 #include "../../lib/topic/topic.h"
 #include <string.h> //basename()
 
+/**
+ * @brief  模拟shell终端的调试方式
+ * 
+ */
+
 namespace ZROS{
 class ModuleArgument{
 public:

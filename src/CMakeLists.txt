@@ -20,7 +20,6 @@ add_executable(module_argument_test module_argument/module_argument_test.cpp)
 target_link_libraries(module_argument_test module_argument)
 
 
-
 ###############################robot_control####################################
 aux_source_directory(robot_control ROBOT_CONTROL_DIR)
 message(STATUS "robot_control = ${ROBOT_CONTROL_DIR}")
@@ -29,3 +28,13 @@ target_link_libraries(robot_control_mod ${catkin_LIBRARIES})
 
 add_executable(robot_control_test robot_control/robot_control_test.cpp)
 target_link_libraries(robot_control_test robot_control_mod)
+
+
+###############################process_planning####################################
+add_library(process_planning SHARED process_planning.cpp)
+target_link_libraries(process_planning robot_control_mod elevator_control)
+
+
+###################################node###########################################
+add_executable(elevator_node node.cpp)
+target_link_libraries(elevator_node process_planning)

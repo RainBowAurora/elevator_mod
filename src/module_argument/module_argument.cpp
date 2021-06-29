@@ -6,6 +6,10 @@
 
 namespace ZROS{
 
+/**
+ * @brief 帮助提示信息
+ * 
+ */
 void ModuleArgument::DisplayUsage(){
     std::cout   << "Usage: \n    " << binary_name_ << " [OPTION]...\n"
                 << "Description: \n"
@@ -19,6 +23,12 @@ void ModuleArgument::ParseArgument(int argc, char* const argv[]){
     GetOptions(argc, argv);  //解析参数
 }
 
+/**
+ * @brief 解析参数
+ * 
+ * @param argc 参数个数
+ * @param argv 参数本体
+ */
 void ModuleArgument::GetOptions(const int argc, char* const argv[]) {
     int long_index = 0;
     const std::string short_opts = "hd:p:s";

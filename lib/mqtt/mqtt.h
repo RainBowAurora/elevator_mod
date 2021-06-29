@@ -17,6 +17,7 @@
 #include <cstring>
 #include <map>
 #include <mutex>
+#include <functional>
 
 #include <mosquittopp.h>
 #include <mosquitto.h>
@@ -27,18 +28,21 @@ class Mqtt final: public mosqpp::mosquittopp{
 public:
     using revice_type = std::map<std::string, std::string>;
 
-    explicit Mqtt(const char* id, const char* host, int port);
+    explicit Mqtt(const char* id, const char* host, int port, const char* username, const char* pwd);
     Mqtt() = default;
     ~Mqtt();
 
     void send_topic(const std::string& topic) { this->topic_ = topic;}
     void send_port(const int port) { this->port_ = port; }
     void send_host(const std::string& host) {this->host_ = host;}
+    void send_username_pwd(const std::string& username, const std::string& pwd) {this->username_ = username, this->pwd_ = pwd;}
     std::string get_topic() const { return this->topic_; }
     int get_port() const { return this->port_; }
-    revice_type get_revice_data();
+    std::string get_revice_data(const std::string& );
 
-    int send_message(const std::string& message, const std::string& topic = "");
+    void set_trigger(std::function<void(std::string)> func) { this->trigger_function = func; }
+
+    int send_message(const std::string& message, const std::string& topic = "", const int& qos = 1, const bool& retain = false);
     std::string receive_message(const std::string& topic = "");
 
     void on_connect(int /*rc*/) override;
@@ -55,11 +59,14 @@ public:
 private:
     revice_type revice_data_;
     std::string host_ = "localhost";
-    std::string id_ = "tempconv";
+    std::string id_ = "zhen-robot";
     std::string topic_ = "temp";
+    std::string username_ = "robot";
+    std::string pwd_ = "";
     int port_ = 1883;
     const int keeplive_ = 60;
     std::mutex revice_mutex;
+    std::function<void(std::string)> trigger_function;
 
 };
 

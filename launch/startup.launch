@@ -1,0 +1,8 @@
+<!--xml vesion="1.0"-->
+<launch>
+	<node pkg="elevator_mod" type="elevator_node" name="elevator_node" output="screen">
+		<param name="client_id" value="zhen-zr1022"/>
+		<param name="site_id" value="woowa-big-office"/>
+		<param name="mqtt_ip" value="elevator-commander-broker.robot.beta.baemin.com"/>
+	</node>
+</launch>
